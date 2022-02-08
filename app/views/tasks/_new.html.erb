@@ -1,0 +1,9 @@
+<%= form_for(task) do |f| %>
+  <div class="input-group mb-4">
+    <%= f.hidden_field :user_id, value: User.first.id %>
+    <%= f.text_field :title, class: "form-control col-sm-12", placeholder: "Add a todo item" %>
+    <div class="input-group-append">
+      <%= f.submit "Add", class: "btn btn-primary input-group-btn" %>
+    </div>
+  </div>
+<% end %>

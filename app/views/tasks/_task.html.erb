@@ -1,0 +1,42 @@
+<%= turbo_frame_tag dom_id(task) do %>
+    <li class="list-group-item"> 
+      <div class="row">
+        <div class="col-auto">
+          <%= link_to '#', class: "btn btn-info btn-sm" do %>
+            <i class="fas fa-check"></i>
+          <% end %>
+        </div>
+        <div class="col">
+
+          <h6 class="text-dark"><%= task.title %></h6>
+          <div class="text-secondary m-0">
+            <small><%= task.due_date.strftime("%d/%m/%Y") if task.due_date.present? %></small>
+            <% if task.tag_id.present? %>
+              <span class="badge badge-secondary float-right">
+                <%= task.tag.title %>
+              </span>
+            <% end %>
+          </div> 
+        
+        </div>
+        <div class="col-auto">
+          <%= link_to "javascript:;", class: "btn btn-primary btn-sm", data: { controller: "modal", action: "click->modal#abrirModal", "modal-task-value": dom_id(task) } do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+        </div>
+        <div class="col-auto">  
+          <%= button_to task_path(task), method: :delete, data: { confirm: "Você esta certo disso?"}, class: "btn btn-danger btn-sm" do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+        </div>  
+      </div>
+    </li>
+    
+    <div id="form-<%= dom_id(task) %>" class="d-none">      
+      <%= render 'edit', task: task %>
+    </div>
+
+<% end %>
+
+
+

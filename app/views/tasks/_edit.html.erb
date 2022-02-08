@@ -1,0 +1,10 @@
+<%= bootstrap_form_for(task) do |form| %>
+  <div class="modal-body">        
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <%= form.submit class: "btn btn-primary" %>
+  <div>
+<% end %>

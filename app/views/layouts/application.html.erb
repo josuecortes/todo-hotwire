@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_importmap_tags %>
+    <script src="https://kit.fontawesome.com/2ec2a30cc1.js" crossorigin="anonymous"></script>  
+  </head>
+
+  <body class="bg-light">
+
+    <header>
+      
+
+      <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+          <a class="navbar-brand" href="#">Brand</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="main_nav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
+              <li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
+              <li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
+            </ul>
+          </div> <!-- navbar-collapse.// -->
+        </div> <!-- container-fluid.// -->
+      </nav>
+    </header>
+
+    <div class="container" data-controller="modal">
+      
+      <div class="row">
+        <div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2">
+          <p id="notice"><%= notice %></p>
+          <ul class="nav nav-pills nav-justified" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Today</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Late</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tomorow</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#">Week</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#">Month</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#">Done</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="card mt-2">
+              <%= yield %>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+
+</html>

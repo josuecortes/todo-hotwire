@@ -1,0 +1,38 @@
+<%= turbo_stream_from "tasks" %>
+
+<div class="card-header d-flex justify-content-between">
+  <div>
+    <h5 class="m-0"><b>Tasks</b></h5>
+    <p class="text-secondary m-0"><small>Total (<%= @tasks.count %>)</small></p> 
+  </div>  
+  <div>
+    <%= link_to '#', class: "btn btn-info btn-sm" do %>
+      <i class="fas fa-hashtag"></i> Tags
+    <% end %>
+  </div>  
+</div>
+
+<div class="card-body">
+  <%= turbo_frame_tag "task_form", target: "_top" do %>
+    <%= render 'new', task: @task %>
+  <% end %>  
+
+  <%= turbo_frame_tag "tasks" do %>
+    <ul class="list-group">
+      <%= render @tasks %>
+    </ul>  
+  <% end %>
+</div>
+
+<div class="modal" tabindex="-1" id="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="content-body"></div>
+    </div>
+  </div>
+</div>
+
